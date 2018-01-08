@@ -26,7 +26,7 @@ namespace signaldata::technical_indicator {
  * @param period
  * @return
  */
-xt::xtensor<double, 1> average_true_range(xt::xtensor<double, 1> data, int period) {
+xt::xtensor<double, 1> average_true_range(xt::xtensor<double, 1>& data, const int period) {
     xt::xtensor<double, 1> tr = true_range(data, period);
     xt::xtensor<double, 1> atr = xt::zeros<double>({1, static_cast<int>(tr.shape()[0])});
     xt::view(atr, xt::range(0, period - 1)) = xt::view(tr, xt::range(0, period - 1));

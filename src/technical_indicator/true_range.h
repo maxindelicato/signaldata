@@ -26,7 +26,7 @@ namespace signaldata::technical_indicator {
  * @param period
  * @return
  */
-xt::xtensor<double, 1> true_range(xt::xtensor<double, 1> data, int period) {
+xt::xtensor<double, 1> true_range(const xt::xtensor<double, 1>& data, const int period) {
     xt::xtensor<double, 1> tr = xt::zeros<double>({1, static_cast<int>(data.shape()[0])});
     for (auto i = period - 1; i < data.size(); i++) {
         xt::xtensor<double, 1> tr_rollup = xt::zeros<double>({1, 3});

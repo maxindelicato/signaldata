@@ -43,4 +43,9 @@ int index(xt::xtensor<double, 1> data, double val) {
     return -1;
 }
 
+double standard_deviation(xt::xtensor<double, 1> data, int ddof) {
+    xt::xtensor<double, 1> sd = xt::sqrt(xt::mean_ddof(xt::pow(xt::abs(data - xt::mean(data)), 2), ddof));
+    return sd[0];
+};
+
 }

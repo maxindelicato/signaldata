@@ -27,8 +27,9 @@ namespace signaldata::technical_indicator {
  * @param volume
  * @return
  */
-xt::xtensor<double, 1> accumulation_distribution(xt::xtensor<double, 1> close_data, xt::xtensor<double, 1> high_data,
-    xt::xtensor<double, 1> low_data, xt::xtensor<double, 1> volume) {
+xt::xtensor<double, 1> accumulation_distribution(const xt::xtensor<double, 1>& close_data,
+    const xt::xtensor<double, 1>& high_data, const xt::xtensor<double, 1>& low_data,
+    const xt::xtensor<double, 1>& volume) {
     xt::xtensor<double, 1> ad = xt::zeros<double>({1, static_cast<int>(close_data.shape()[0])});
     for (auto i = 1; i < close_data.size(); i++) {
         ad(1, i) = (

@@ -26,9 +26,8 @@ namespace signaldata::technical_indicator {
  * @param period
  * @return
  */
-xt::xtensor<double, 1> average_true_range_percent(xt::xtensor<double, 1> data, int period) {
-    xt::xtensor<double, 1> atrp = (average_true_range(data, period) / data) * 100;
-    return atrp;
+xt::xtensor<double, 1> average_true_range_percent(xt::xtensor<double, 1>& data, const int period) {
+    return (average_true_range(data, period) / data) * 100;
 };
 
 }
