@@ -31,7 +31,7 @@
 #include "../src/technical_indicator/average_true_range_percent.h"
 #include "../src/technical_indicator/bollinger_bands.h"
 #include "../src/technical_indicator/chaikin_money_flow.h"
-
+#include "../src/technical_indicator/hull_moving_average.h"
 
 BOOST_AUTO_TEST_SUITE(extension_switch_test_suite)
 
@@ -379,4 +379,12 @@ BOOST_AUTO_TEST_CASE(test_case_chaikin_money_flow, *boost::unit_test::enabled())
 
     std::cout << "cmf: " << cmf << std::endl;
 }
+
+BOOST_AUTO_TEST_CASE(test_case_hull_moving_average, *boost::unit_test::enabled()) {
+    auto period = 6;
+    auto hma = ti::hull_moving_average(sample_close_data, period);
+
+    std::cout << "hma: " << hma << std::endl;
+}
+
 BOOST_AUTO_TEST_SUITE_END()
