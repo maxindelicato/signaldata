@@ -29,6 +29,8 @@
 #include "../src/technical_indicator/true_range.h"
 #include "../src/technical_indicator/average_true_range.h"
 #include "../src/technical_indicator/average_true_range_percent.h"
+#include "../src/technical_indicator/bollinger_bands.h"
+#include "../src/technical_indicator/chaikin_money_flow.h"
 
 
 BOOST_AUTO_TEST_SUITE(extension_switch_test_suite)
@@ -129,7 +131,7 @@ BOOST_AUTO_TEST_CASE(test_case_average_true_range_percent, *boost::unit_test::en
     std::cout << "atrp: " << atrp << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_average_true_range, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_average_true_range, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
 
@@ -138,7 +140,7 @@ BOOST_AUTO_TEST_CASE(test_case_average_true_range, *boost::unit_test::disabled()
     std::cout << "atr: " << atr << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_true_range, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_true_range, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
 
@@ -147,7 +149,7 @@ BOOST_AUTO_TEST_CASE(test_case_true_range, *boost::unit_test::disabled()) {
     std::cout << "tr: " << tr << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_aroon_up, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_aroon_up, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 25;
 
@@ -156,7 +158,7 @@ BOOST_AUTO_TEST_CASE(test_case_aroon_up, *boost::unit_test::disabled()) {
     std::cout << "au: " << au << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_aroon_down, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_aroon_down, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 25;
 
@@ -165,7 +167,7 @@ BOOST_AUTO_TEST_CASE(test_case_aroon_down, *boost::unit_test::disabled()) {
     std::cout << "ad: " << ad << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_lower_band, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_lower_band, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
     auto env_percentage = 0.1;
@@ -175,7 +177,7 @@ BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_lower_band, *boost::unit_
     std::cout << "maelb: " << maelb << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_upper_band, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_upper_band, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
     auto env_percentage = 0.1;
@@ -185,7 +187,7 @@ BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_upper_band, *boost::unit_
     std::cout << "maeub: " << maeub << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_center_band, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_center_band, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
 
@@ -194,7 +196,7 @@ BOOST_AUTO_TEST_CASE(test_case_moving_average_envelope_center_band, *boost::unit
     std::cout << "maecb: " << maecb << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_weighted_moving_average, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_weighted_moving_average, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
 
@@ -203,7 +205,7 @@ BOOST_AUTO_TEST_CASE(test_case_weighted_moving_average, *boost::unit_test::disab
     std::cout << "wma[" << "]: " << wmas << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_money_flow, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_money_flow, *boost::unit_test::enabled()) {
     auto volume = sample_volume;
     auto close_data = sample_close_data;
     auto high_data = sample_high_data;
@@ -214,7 +216,7 @@ BOOST_AUTO_TEST_CASE(test_case_money_flow, *boost::unit_test::disabled()) {
     std::cout << "mfs: " << mfs << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_typical_price, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_typical_price, *boost::unit_test::enabled()) {
     auto close_data = sample_close_data;
     auto high_data = sample_high_data;
     auto low_data = sample_low_data;
@@ -224,12 +226,12 @@ BOOST_AUTO_TEST_CASE(test_case_typical_price, *boost::unit_test::disabled()) {
     std::cout << "tps: " << tps << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_accumulation_distribution, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_accumulation_distribution, *boost::unit_test::enabled()) {
     auto ad = ti::accumulation_distribution(sample_close_data, sample_high_data, sample_low_data, sample_volume);
     std::cout << "ad: " << ad << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_standard_variance, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_standard_variance, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
 
@@ -238,7 +240,7 @@ BOOST_AUTO_TEST_CASE(test_case_standard_variance, *boost::unit_test::disabled())
     std::cout << "svs: " << svs << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_standard_deviation, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_standard_deviation, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
 
@@ -247,7 +249,7 @@ BOOST_AUTO_TEST_CASE(test_case_standard_deviation, *boost::unit_test::disabled()
     std::cout << "sds: " << sds << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_senkou_b, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_senkou_b, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 52;
 
@@ -256,7 +258,7 @@ BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_senkou_b, *boost::unit_test::disab
     std::cout << "senkou_b: " << senkou_b << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_senkou_a, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_senkou_a, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 26;
 
@@ -265,7 +267,7 @@ BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_senkou_a, *boost::unit_test::disab
     std::cout << "senkou_a: " << senkou_a << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_chiku_span, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_chiku_span, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 26;
 
@@ -274,7 +276,7 @@ BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_chiku_span, *boost::unit_test::dis
     std::cout << "chiku_span: " << chiku_span << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_kijunsen, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_kijunsen, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 26;
 
@@ -283,7 +285,7 @@ BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_kijunsen, *boost::unit_test::disab
     std::cout << "kijunsen: " << kijunsen << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_tenkansen, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_tenkansen, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 9;
 
@@ -292,16 +294,15 @@ BOOST_AUTO_TEST_CASE(test_case_ichimoku_cloud_tenkansen, *boost::unit_test::disa
     std::cout << "tenkansen: " << tenkansen << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_momentum, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_momentum, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
     auto moms = ti::momentum(data, period);
 
-    for (auto i = 0; i < moms.size(); i++)
-        std::cout << "momentum: " << moms[i] << std::endl;
+    std::cout << "momentum: " << moms << std::endl;
 }
 
-BOOST_AUTO_TEST_CASE(test_case_simple_moving_average, *boost::unit_test::disabled()) {
+BOOST_AUTO_TEST_CASE(test_case_simple_moving_average, *boost::unit_test::enabled()) {
     auto data = sample_close_data;
     auto period = 6;
     auto smas = ti::simple_moving_average(sample_close_data, period);
@@ -309,4 +310,73 @@ BOOST_AUTO_TEST_CASE(test_case_simple_moving_average, *boost::unit_test::disable
     std::cout << "smas: " << smas << std::endl;
 }
 
+BOOST_AUTO_TEST_CASE(test_case_upper_bollinger_band, *boost::unit_test::enabled()) {
+    auto data = sample_close_data;
+    auto period = 6;
+    auto std_mult = 2.0;
+    auto ubb = ti::upper_bollinger_band(data, period, std_mult);
+
+    std::cout << "ubb: " << ubb << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(test_case_middle_bollinger_band, *boost::unit_test::enabled()) {
+    auto data = sample_close_data;
+    auto period = 6;
+    auto std_mult = 2.0;
+    auto mbb = ti::middle_bollinger_band(data, period, std_mult);
+
+    std::cout << "mbb: " << mbb << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(test_case_lower_bollinger_band, *boost::unit_test::enabled()) {
+    auto data = sample_close_data;
+    auto period = 6;
+    auto std_mult = 2.0;
+    auto lbb = ti::lower_bollinger_band(data, period, std_mult);
+
+    std::cout << "lbb: " << lbb << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(test_case_bandwidth, *boost::unit_test::enabled()) {
+    auto data = sample_close_data;
+    auto period = 6;
+    auto std_mult = 2.0;
+    auto b = ti::bandwidth(data, period, std_mult);
+
+    std::cout << "b: " << b << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(test_case_bb_range, *boost::unit_test::enabled()) {
+    auto data = sample_close_data;
+    auto period = 6;
+    auto std_mult = 2.0;
+    auto bbr = ti::bb_range(data, period, std_mult);
+
+    std::cout << "bbr: " << bbr << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(test_case_percent_bandwidth, *boost::unit_test::enabled()) {
+    auto data = sample_close_data;
+    auto period = 6;
+    auto std_mult = 2.0;
+    auto pbw = ti::percent_bandwidth(data, period, std_mult);
+
+    std::cout << "pbw: " << pbw << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(test_case_percent_b, *boost::unit_test::enabled()) {
+    auto data = sample_close_data;
+    auto period = 6;
+    auto std_mult = 2.0;
+    auto pb = ti::percent_b(data, period, std_mult, std_mult);
+
+    std::cout << "pb: " << pb << std::endl;
+}
+
+BOOST_AUTO_TEST_CASE(test_case_chaikin_money_flow, *boost::unit_test::enabled()) {
+    auto period = 6;
+    auto cmf = ti::chaikin_money_flow(sample_close_data, sample_high_data, sample_low_data, sample_volume, period);
+
+    std::cout << "cmf: " << cmf << std::endl;
+}
 BOOST_AUTO_TEST_SUITE_END()
